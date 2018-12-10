@@ -1,3 +1,9 @@
-<p>
-  recipes works!
-</p>
+<h2>{{recipe.name | uppercase}} Details</h2>
+<div><span>User: </span>{{recipe.User | uppercase}}</div>
+<div><span>Description: </span>{{recipe.Description}}</div>
+
+<div>
+  <label>Name:
+    <input [(ngModel)]="recipe.name" placeholder="Name">
+  </label>
+</div>
