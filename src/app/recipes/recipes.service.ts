@@ -2,12 +2,12 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { map, catchError, tap } from 'rxjs/operators';
-import { Recipe } from '../recipe';
+import { Recipe } from './recipe';
 
 @Injectable()
 export class Recipeservice {
 
-    private recipesUrl = 'api/recipes';
+    private recipesUrl = 'http://localhost:3000/api/recipe';
 
     constructor(
         private http: HttpClient,
@@ -16,7 +16,7 @@ export class Recipeservice {
 
     getRecipes() {
         return this.http
-            .get<Recipe[]>(this.recipesUrl)
+            .get<Recipe[]>(this.recipesUrl + "s")
             .pipe(map(data => data), 
             catchError(this.handleError<any>('getRecipes'))
         );
