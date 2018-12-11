@@ -4,20 +4,20 @@ import { Observable, of } from 'rxjs';
 import { map, catchError, tap } from 'rxjs/operators';
 import { Recipe } from './recipe';
 
-@Injectable()
+@Injectable({
+    providedIn: 'root'
+})
+
 export class Recipeservice {
 
-    private recipesUrl = 'http://localhost:3000/api/recipe';
+    recipesUrl = 'http://localhost:3000/api/recipe';
 
-    constructor(
-        private http: HttpClient,
-        //private messageService: MessageService
-        ) { }    
+    constructor(private http: HttpClient) { }    
 
     getRecipes() {
         return this.http
-            .get<Recipe[]>(this.recipesUrl + "s")
-            .pipe(map(data => data), 
+            .get<Recipe[]>(this.recipesUrl + "s").pipe(
+                map(data => data), 
             catchError(this.handleError<any>('getRecipes'))
         );
     }

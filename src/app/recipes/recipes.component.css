@@ -1,0 +1,9 @@
+.Recipe-card {
+  max-width: 400px;
+}
+
+.Recipe-header-image {
+  background-image: url('https://www.deltaco.com/images/food/menu/thumbs/tacos/thumb_tacos.jpg');
+  background-size: cover;
+}
+

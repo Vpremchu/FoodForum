@@ -32,12 +32,12 @@ export class RecipesComponent implements OnInit {
   }
 
   onSelect(recipe: Recipe): void {
-    this.selectedRecipe= recipe;
+    this.selectedRecipe = recipe;
     this.addingRecipe = false;
   }
 
-  gotoDetail(): void {
-    this.router.navigate(['/detail', this.selectedRecipe.Id]);
+  gotoDetail(id): void {
+    this.router.navigate(['/recipe-detail/' +id]);
   }
 
 }

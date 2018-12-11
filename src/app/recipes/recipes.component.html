@@ -1,4 +1,4 @@
-<h2>{{recipe.name | uppercase}} Details</h2>
+<!-- <h2>{{recipe.name | uppercase}} Details</h2>
 <div><span>User: </span>{{recipe.User | uppercase}}</div>
 <div><span>Description: </span>{{recipe.Description}}</div>
 
@@ -6,6 +6,32 @@
   <li *ngFor="let recipe of recipes" [class.selected]="recipe === selectedRecipe" (click)="onSelect(recipe)">
     <span class="badge">{{recipe.id}}</span> {{recipe.name}}
   </li>
-</ul>
+</ul> -->
 
-<app-recipe-detail [recipe]="selectedRecipe"></app-recipe-detail>
+
+<mat-grid-list cols="2" rowHeight="450px">
+  <mat-grid-tile *ngFor="let recipe of recipes" [colspan]="1" [rowspan]="1">
+
+      <mat-card class="Recipe-card">
+        <mat-card-header>
+          <div mat-card-avatar class="Recipe-header-image"></div>
+          <mat-card-title>{{recipe.Name | uppercase}}</mat-card-title>
+        </mat-card-header>
+      
+        <img mat-card-image src="https://igav3-metcdn-com.global.ssl.fastly.net/content/uploads/sites/2/2017/06/05162419/beef-tacos.jpg">
+      
+        <mat-card-content>
+          <p>
+            {{recipe.Description}}
+          </p>
+        </mat-card-content>
+      
+        <mat-card-actions>
+          <button mat-button (click)="gotoDetail(recipe._id)">
+            Details
+          </button>
+        </mat-card-actions>
+      </mat-card>
+
+  </mat-grid-tile>
+</mat-grid-list>

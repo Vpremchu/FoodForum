@@ -1,3 +1,26 @@
-<p>
-  users works!
-</p>
+<mat-grid-list cols="2" rowHeight="250px">
+  <mat-grid-tile *ngFor="let user of users" [colspan]="1" [rowspan]="1">
+
+    <mat-card class="User-card">
+      <mat-card-header>
+        <div mat-card-avatar class="User-header-image"></div>
+        <mat-card-title>{{user.name | uppercase}}</mat-card-title>
+      </mat-card-header>
+
+      <!-- <img mat-card-image src="https://igav3-metcdn-com.global.ssl.fastly.net/content/uploads/sites/2/2017/06/05162419/beef-tacos.jpg">
+
+      <mat-card-content>
+        <p>
+          {{user.Description}}
+        </p>
+      </mat-card-content> -->
+
+      <mat-card-actions>
+        <button mat-button (click)="gotoDetail(user._id)">
+          Details
+        </button>
+      </mat-card-actions>
+    </mat-card>
+
+  </mat-grid-tile>
+</mat-grid-list>
