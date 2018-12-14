@@ -1,0 +1,15 @@
+.login {
+  display: flex;
+  flex-direction: column;
+}
+
+.login > * {
+    margin-left: 7.5%;
+    width: 80%;
+}
+
+h2 {
+    margin-left: 7.5%;
+    font-size: 2em;
+    color: gray;
+}

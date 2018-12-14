@@ -1,0 +1,25 @@
+<div *ngIf="user">
+
+  <h2>{{user.name | uppercase}} Details</h2>
+
+  <!-- <img class="image" width="30%" src="{{recipe.ImageUrl}}"> -->
+
+
+  <div>    
+
+    <div class="User-email">
+      <h3>E-mail</h3>
+      {{user.email}}
+    </div>
+
+    <mat-list role="list" class="Recipes-list">
+      <h3>Recipes</h3>
+      <mat-list-item role="listitem" *ngFor="let recipe of Recipes">{{recipe.Name}}</mat-list-item>
+    </mat-list>
+
+  </div>
+
+  <!-- <button mat-raised-button class="Button" (click)="updateUser(user._id)">Edit</button> -->
+  <button mat-raised-button class="Button" (click)="deleteUser(user.email)">Delete</button>
+
+</div>

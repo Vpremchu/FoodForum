@@ -1,0 +1,14 @@
+<div class="center-content">
+  <h2 style="color:#e0d9c6">Add comment</h2>
+  <div>
+    <form class="myForm">
+
+      <mat-form-field class="full-width" appearance="legacy">
+        <mat-label>Content</mat-label>
+        <input [(ngModel)]="comment.Content" matInput placeholder="Content" [ngModelOptions]="{standalone: true}">
+      </mat-form-field>
+
+    </form>
+  </div>
+  <button mat-raised-button (click)="saveComment()">Save</button>
+</div>

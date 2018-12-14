@@ -1,0 +1,11 @@
+.Recipe-card {
+  max-width: 400px;
+}
+
+.Recipe-header-image {
+  background-size: cover;
+}
+
+.AddButton {
+  width: 100%;
+}
