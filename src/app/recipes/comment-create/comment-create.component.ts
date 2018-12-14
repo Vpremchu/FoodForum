@@ -31,4 +31,6 @@ export class CommentCreateComponent implements OnInit {
     }); 
   }
 
+  saveComment() {}
+
 }
