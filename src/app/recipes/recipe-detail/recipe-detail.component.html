@@ -1,11 +1,36 @@
 <div *ngIf="recipe">
 
   <h2>{{recipe.Name | uppercase}} Details</h2>
-  <div><span>Id: </span>{{recipe.id}}</div>
+
+  <img class="image" width="30%" src="{{recipe.ImageUrl}}">
+
+
   <div>
-    <label>Name:
-      <input [(ngModel)]="recipe.name" placeholder="name">
-    </label>
+
+    <mat-list role="list" class="Ingredient-list">
+      <h3>Ingredients</h3>
+      <mat-list-item role="listitem" *ngFor="let ingredient of recipe.Ingredients">{{ingredient.Name}}  |  {{ingredient.Description}}  |  {{ingredient.Amount}}</mat-list-item>
+    </mat-list>
+
+    <div *ngIf="user" class="Recipe-user">
+      <h3>Chef</h3>
+      {{user.name}}
+    </div>
+
+    <div class="Recipe-description">
+      <h3>Description</h3>
+      {{recipe.Description}}
+    </div>
+
+    <div class="Recipe-description">
+      <h3>Preperation</h3>
+      {{recipe.Preperation}}
+    </div>
+
   </div>
+
+  <button mat-raised-button class="Button" (click) = "updateRecipe(recipe._id)">Edit</button>
+  <button mat-raised-button class="Button" (click) = "deleteRecipe(recipe._id)">Delete</button>
+  <button mat-raised-button class="Button" (click)= "addComment(recipe._id)">Add comment</button>
 
 </div>

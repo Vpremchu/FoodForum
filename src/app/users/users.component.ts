@@ -30,4 +30,8 @@ export class UsersComponent implements OnInit {
       );
   }
 
+  gotoDetail(id): void {
+    this.router.navigate(['/user-detail/' + id]);
+  }
+
 }

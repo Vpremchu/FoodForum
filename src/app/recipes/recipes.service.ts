@@ -4,38 +4,40 @@ import { Observable, of } from 'rxjs';
 import { map, catchError, tap } from 'rxjs/operators';
 import { Recipe } from './recipe';
 
+const httpOptions = {
+    headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+    })
+};
+
 @Injectable({
     providedIn: 'root'
 })
 
 export class Recipeservice {
 
-    recipesUrl = 'http://localhost:3000/api/recipe';
+    private recipesUrl = 'http://localhost:3000/api/recipe';
+    private extractData(res: Response) {
+        let body = res;
+        return body || {};
+    }
 
     constructor(private http: HttpClient) { }    
 
     getRecipes() {
         return this.http
-            .get<Recipe[]>(this.recipesUrl + "s").pipe(
-                map(data => data), 
+            .get<Recipe[]>(this.recipesUrl).pipe(
+                // map(data => data), 
             catchError(this.handleError<any>('getRecipes'))
         );
     }
 
-    getRecipe(id: number): Observable<Recipe[]> {
-        return this.getRecipes().pipe(
-            map(recipes => recipes.find(recipe => recipe.Id === id))
-        );
+    getRecipe(id): Observable<any> {
+        return this.http.get(this.recipesUrl + '/' + id).pipe(
+            map(this.extractData));
     }
 
-    save(recipe: Recipe) {
-        if (recipe.Id) {
-            return this.put(recipe);
-        }
-        return this.post(recipe);
-    }
-
-    delete(recipe: Recipe) {
+    deleteRecipe(recipe: Recipe) {
         const headers = new Headers();
         headers.append('Content-Type', 'application/json');
 
@@ -45,7 +47,7 @@ export class Recipeservice {
     }
 
     // Add new Recipe
-    private post(recipe: Recipe) {
+    post(recipe: Recipe) {
         const headers = new Headers({
             'Content-Type': 'application/json'
         });
@@ -56,13 +58,11 @@ export class Recipeservice {
     }
 
     // Update existing Recipe
-    private put(recipe: Recipe) {
-        const headers = new Headers();
-        headers.append('Content-Type', 'application/json');
-
-        const url = `${this.recipesUrl}/${recipe.Id}`;
-
-        return this.http.put<Recipe>(url, recipe).pipe(catchError(this.handleError<any>('putRecipe')));
+    put(id, product): Observable<any> {
+        return this.http.put(this.recipesUrl + '/' + id, JSON.stringify(product), httpOptions).pipe(
+            tap(_ => console.log(`updated product id=${id}`)),
+            catchError(this.handleError<any>('updateProduct'))
+        );
     }
 
     private handleError<T>(operation = 'operation', result?: T) {

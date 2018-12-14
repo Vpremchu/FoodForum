@@ -1,0 +1,17 @@
+<h2>Login</h2>
+
+<div>
+  <form class="login" [formGroup]="form">    
+    <mat-form-field class="full-width" appearance="legacy">
+      <mat-label>Email</mat-label>
+      <input formControlName="email" matInput placeholder="E-mail">
+    </mat-form-field>
+    <mat-form-field class="full-width" appearance="legacy">
+      <mat-label>Password</mat-label>
+      <input formControlName="password" matInput type="password" placeholder="Password">
+    </mat-form-field>
+  </form>
+</div>
+<div>
+  <button style="margin-left: 7.5%;" mat-raised-button (click)="loginUser()">Login</button>
+</div>

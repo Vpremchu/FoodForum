@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 })
 export class RecipesComponent implements OnInit {
 
-  recipes: Recipe[];
+  recipes: Recipe[] = [];
   selectedRecipe: Recipe;
   addingRecipe = false;
   error: any;
@@ -26,8 +26,12 @@ export class RecipesComponent implements OnInit {
   getRecipes() {
     this.recipeService.getRecipes()
       .subscribe(
-        recipes => (this.recipes = recipes),
-        error => (this.error = error)
+        
+        recipes => {
+          console.log(recipes);
+          this.recipes = recipes;
+        },
+        error => this.error = error
         );
   }
 
@@ -38,6 +42,10 @@ export class RecipesComponent implements OnInit {
 
   gotoDetail(id): void {
     this.router.navigate(['/recipe-detail/' +id]);
+  }
+
+  createRecipe() {
+    this.router.navigate(['/recipe-create']);
   }
 
 }

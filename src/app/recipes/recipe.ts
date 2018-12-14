@@ -1,4 +1,5 @@
 export class Recipe {
+    Id: number;
     Name: string;
     User: string;
     Category: string;

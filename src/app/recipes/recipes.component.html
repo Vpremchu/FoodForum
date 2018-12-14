@@ -8,17 +8,18 @@
   </li>
 </ul> -->
 
+<button class="AddButton" mat-raised-button (click) = "createRecipe()">Add a recipe</button>
 
 <mat-grid-list cols="2" rowHeight="450px">
   <mat-grid-tile *ngFor="let recipe of recipes" [colspan]="1" [rowspan]="1">
 
       <mat-card class="Recipe-card">
         <mat-card-header>
-          <div mat-card-avatar class="Recipe-header-image"></div>
+          <!-- <div mat-card-avatar class="Recipe-header-image" style="background-image: url('{{recipe.ImageUrl}}')"></div> -->
           <mat-card-title>{{recipe.Name | uppercase}}</mat-card-title>
         </mat-card-header>
       
-        <img mat-card-image src="https://igav3-metcdn-com.global.ssl.fastly.net/content/uploads/sites/2/2017/06/05162419/beef-tacos.jpg">
+        <img mat-card-image src="{{recipe.ImageUrl}}">
       
         <mat-card-content>
           <p>

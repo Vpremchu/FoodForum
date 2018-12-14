@@ -1,0 +1,21 @@
+<h2>Register</h2>
+
+<div>
+  <form class="register" [formGroup]="form">
+    <mat-form-field class="full-width" appearance="legacy">
+          <mat-label>Name</mat-label>
+          <input formControlName="name" matInput placeholder="Name">
+        </mat-form-field>
+    <mat-form-field class="full-width" appearance="legacy">
+      <mat-label>Email</mat-label>
+      <input formControlName="email" matInput placeholder="E-mail">
+    </mat-form-field>
+    <mat-form-field class="full-width" appearance="legacy">
+      <mat-label>Password</mat-label>
+      <input formControlName="password" matInput type="password" placeholder="Password">
+    </mat-form-field>
+  </form>
+</div>
+<div>
+  <button style="margin-left: 7.5%;" mat-raised-button (click)="registerUser()">Register</button>
+</div>
