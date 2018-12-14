@@ -17,7 +17,7 @@ const httpOptions = {
 
 export class UsersService {
 
-  usersUrl = 'https://foodforum-api.herokuapp.com/user';
+  usersUrl = 'https://foodforum-api.herokuapp.com/api/user';
   users: User[];
   @Output() user: EventEmitter<any> = new EventEmitter();
 

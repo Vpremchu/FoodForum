@@ -13,7 +13,7 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class CommentService {
-  private commentUrl = 'https://foodforum-api.herokuapp.com/comment';
+  private commentUrl = 'https://foodforum-api.herokuapp.com/api/comment';
   
   constructor(private http: HttpClient) { } 
 
