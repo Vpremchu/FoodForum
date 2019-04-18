@@ -17,7 +17,7 @@ export class CommentCreateComponent implements OnInit {
    }
 
   ngOnInit() {
-    this.recipeService.getRecipe(this.recipe.snapshot.params['id']).subscribe((data: {}) => {
+    this.recipeService.getRecipe(this.recipe.snapshot.params['_id']).subscribe((data: {}) => {
       console.log(data);
       this.recipe = data
     })
@@ -31,6 +31,13 @@ export class CommentCreateComponent implements OnInit {
     }); 
   }
 
-  saveComment() {}
+  saveComment(_id) {
+    this.commentService.addCommentToRecipe(this.comment._id, this.comment).subscribe((result) => {
+      this.saveComment(this.comment._id);
+      this.router.navigate(['/recipe-details/' + result._id]);
+    }, (err) => {
+      console.log(err);
+    }); 
+  }
 
 }

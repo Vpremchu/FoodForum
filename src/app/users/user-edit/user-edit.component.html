@@ -5,30 +5,20 @@
 
       <mat-form-field class="full-width" appearance="legacy">
         <mat-label>Name</mat-label>
-        <input [(ngModel)]="recipe.Name" matInput placeholder="Name" [ngModelOptions]="{standalone: true}">
+        <input [(ngModel)]="user.name" matInput placeholder="Name" [ngModelOptions]="{standalone: true}">
       </mat-form-field>
 
       <mat-form-field class="full-width" appearance="legacy">
-        <mat-label>Category</mat-label>
-        <input [(ngModel)]="recipe.Category" matInput placeholder="Category" [ngModelOptions]="{standalone: true}">
+        <mat-label>Email</mat-label>
+        <input [(ngModel)]="user.email" matInput placeholder="Email" [ngModelOptions]="{standalone: true}">
       </mat-form-field>
 
-      <mat-form-field class="full-width" appearance="legacy">
-        <mat-label>Description</mat-label>
-        <input [(ngModel)]="recipe.Description" matInput placeholder="Description" [ngModelOptions]="{standalone: true}">
-      </mat-form-field>
-
-      <mat-form-field class="full-width" appearance="legacy">
-        <mat-label>Preperation</mat-label>
-        <input [(ngModel)]="recipe.Preperation" matInput placeholder="Preperation" [ngModelOptions]="{standalone: true}">
-      </mat-form-field>
-
-      <mat-form-field class="full-width" appearance="legacy">
-        <mat-label>ImageUrl</mat-label>
-        <input [(ngModel)]="recipe.ImageUrl" matInput placeholder="ImageUrl" [ngModelOptions]="{standalone: true}">
-      </mat-form-field>
+      <!-- <mat-form-field class="full-width" appearance="legacy">
+        <mat-label>DescripPasswordtion</mat-label>
+        <input [(ngModel)]="user.password" matInput placeholder="Password" [ngModelOptions]="{standalone: true}">
+      </mat-form-field> -->
 
     </form>
   </div>
-  <button mat-raised-button >Save</button>
+  <button mat-raised-button (clik)="saveEdit()">Save</button>
 </div>

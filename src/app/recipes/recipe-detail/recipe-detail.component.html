@@ -33,4 +33,10 @@
   <button mat-raised-button class="Button" (click) = "deleteRecipe(recipe._id)">Delete</button>
   <button mat-raised-button class="Button" (click)= "addComment(recipe._id)">Add comment</button>
 
+  <mat-list role="list" class="Ingredient-list" *ngIf="comment">
+    <mat-list-item role="listitem" *ngFor="let comment of recipe.Comments">{{comment.Content}}</mat-list-item>
+    <button mat-raised-button class="CommentButton" (click)="updateComment(comment._id)">Edit</button>
+    <button mat-raised-button class="CommentButton" (click)="deleteComment(comment._id)">Delete</button>
+  </mat-list>
+
 </div>

@@ -12,12 +12,18 @@ export class LoginComponent implements OnInit {
 
   form: FormGroup;    
 
-  constructor(public usersService: UsersService, private fb: FormBuilder, private route: ActivatedRoute, private router: Router) {
-    this.form = this.fb.group({
-      email: ['', Validators.required],
-      password: ['', Validators.required]
-    });
-  }
+  constructor(
+    public usersService: UsersService, 
+    private fb: FormBuilder, 
+    private route: ActivatedRoute, 
+    private router: Router) 
+    {
+      this.form = this.fb.group(
+        {
+        email: ['', Validators.required],
+        password: ['', Validators.required]
+        });
+    }
 
   ngOnInit() {
   }
@@ -30,6 +36,9 @@ export class LoginComponent implements OnInit {
           console.log("User is logged in");
           this.router.navigateByUrl('/');
         });
+    } else {
+      console.log("Login failed");
+      this.router.navigateByUrl('/login');      
     }
   }
 }

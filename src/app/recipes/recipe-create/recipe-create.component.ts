@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Recipeservice } from '../recipes.service';
 import { UsersService } from '../../users/users.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Recipe } from '../recipe';
 
 @Component({
   selector: 'app-recipe-create',
@@ -10,6 +11,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class RecipeCreateComponent implements OnInit {
   userID:any;
+  //ingredients: ingredient[];
 
   @Input() recipe: any = { Name: '', Ingredients: [], Description: "", User: this.userID, Preperation: "", Category: "", ImageUrl: "" };
 
