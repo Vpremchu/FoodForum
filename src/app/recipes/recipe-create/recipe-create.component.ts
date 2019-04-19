@@ -2,7 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Recipeservice } from '../recipes.service';
 import { UsersService } from '../../users/users.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { FormGroup, FormArray, FormBuilder } from '@angular/forms';
+import { FormGroup, FormArray, FormBuilder, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-recipe-create',
@@ -12,7 +12,7 @@ import { FormGroup, FormArray, FormBuilder } from '@angular/forms';
 export class RecipeCreateComponent implements OnInit {
   userID: any;
   recipeForm: FormGroup;
-  ingredients: FormArray;
+  // Ingredients: FormArray;  
 
   @Input() recipe: any = { Name: '', Ingredients: [], Description: "", User: this.userID, Preperation: "", Category: "", ImageUrl: "" };
 
@@ -23,21 +23,29 @@ export class RecipeCreateComponent implements OnInit {
       this.userID = data._id
     });
     this.recipeForm = this.formBuilder.group({
-      Name: '',
-      Description: '',
-      Ingredients: this.formBuilder.array([this.createItem()]),
+      Name: new FormControl(""),
+      Description: new FormControl(""),
+      Ingredients: this.formBuilder.array([this.createIngredient()]),
       User: this.userID,
-      Preperation: '',
-      Category: '',
-      ImageUrl: ''
-    });
+      Preperation: new FormControl(""),
+      Category: new FormControl(""),
+      ImageUrl: new FormControl("")
+    })
   }
 
-  createItem(): FormGroup {
+  get Ingredients() {
+    return this.recipeForm.get('Ingredients') as FormArray;
+  }
+
+  addIngredient() {
+    this.Ingredients.push(this.createIngredient());
+  }
+
+  createIngredient(): FormGroup {
     return this.formBuilder.group({
-      Name: '',
-      Description: '',
-      Amount: ''
+      Name: new FormControl(""),
+      Description: new FormControl(""),
+      Amount: new FormControl("")
     });
   }
 

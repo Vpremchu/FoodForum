@@ -1,4 +1,5 @@
 <div class="center-content">
+
   <h2 style="color:#e0d9c6">Create recipe</h2>
   <div>
     <div [formGroup]="recipeForm" class="myForm">
@@ -9,13 +10,13 @@
       </mat-form-field>
 
       <mat-form-field class="full-width" appearance="legacy">
-        <div formArrayName="ingredients"
-          *ngFor="let ingredient of recipeForm.get('Ingredients').controls; let i = index;">
+        <div formArrayName="Ingredients">
+          <button mat-raised-button (click)="addIngredient()">Add ingredient</button>
+          <div *ngFor="let ingredient of Ingredients.controls; let i = index"  formGroupName="{{i}}">
           <mat-label>Ingredients</mat-label>
-          <div [formGroupName]="i">
-            <input formControlName="Name" matInput placeholder="Name">
-            <input formControlName="Description" matInput placeholder="Description">
-            <input formControlName="Amount" matInput placeholder="Amount">
+              <input formControlName="Name" matInput placeholder="Name">
+              <input formControlName="Description" matInput placeholder="Description">
+              <input formControlName="Amount" matInput placeholder="Amount">
           </div>
         </div>
       </mat-form-field>
