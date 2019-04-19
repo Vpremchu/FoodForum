@@ -1,41 +1,46 @@
 <div class="center-content">
   <h2 style="color:#e0d9c6">Create recipe</h2>
   <div>
-    <form class="myForm">
+    <div [formGroup]="recipeForm" class="myForm">
 
       <mat-form-field class="full-width" appearance="legacy">
         <mat-label>Name</mat-label>
-        <input [(ngModel)]="recipe.Name" matInput placeholder="Name" [ngModelOptions]="{standalone: true}">
+        <input formControlName="Name" matInput placeholder="Name">
       </mat-form-field>
 
-      <mat-form-field *ngFor="let ingredient of recipe.Ingredients" class="full-width" appearance="legacy">
-        <mat-label>Ingredients</mat-label>
-        <input [(ngModel)]="ingredient.Name" matInput placeholder="ingredientName" [ngModelOptions]="{standalone: true}">
-        <input [(ngModel)]="ingredient.Description" matInput placeholder="ingredientDescription" [ngModelOptions]="{standalone: true}">
-        <input [(ngModel)]="ingredient.Amount" matInput placeholder="ingredientAmount" [ngModelOptions]="{standalone: true}">
+      <mat-form-field class="full-width" appearance="legacy">
+        <div formArrayName="ingredients"
+          *ngFor="let ingredient of recipeForm.get('Ingredients').controls; let i = index;">
+          <mat-label>Ingredients</mat-label>
+          <div [formGroupName]="i">
+            <input formControlName="Name" matInput placeholder="Name">
+            <input formControlName="Description" matInput placeholder="Description">
+            <input formControlName="Amount" matInput placeholder="Amount">
+          </div>
+        </div>
       </mat-form-field>
 
       <mat-form-field class="full-width" appearance="legacy">
         <mat-label>Category</mat-label>
-        <input [(ngModel)]="recipe.Category" matInput placeholder="Category" [ngModelOptions]="{standalone: true}">
+        <input formControlName="Category" matInput placeholder="Category">
       </mat-form-field>
 
       <mat-form-field class="full-width" appearance="legacy">
         <mat-label>Description</mat-label>
-        <input [(ngModel)]="recipe.Description" matInput placeholder="Description" [ngModelOptions]="{standalone: true}">
+        <input formControlName="Description" matInput placeholder="Description">
       </mat-form-field>
 
       <mat-form-field class="full-width" appearance="legacy">
         <mat-label>Preperation</mat-label>
-        <input [(ngModel)]="recipe.Preperation" matInput placeholder="Preperation" [ngModelOptions]="{standalone: true}">
+        <input formControlName="Preperation" matInput placeholder="Preperation">
       </mat-form-field>
 
       <mat-form-field class="full-width" appearance="legacy">
         <mat-label>ImageUrl</mat-label>
-        <input [(ngModel)]="recipe.ImageUrl" matInput placeholder="ImageUrl" [ngModelOptions]="{standalone: true}">
+        <input formControlName="ImageUrl" matInput placeholder="ImageUrl">
       </mat-form-field>
 
-    </form>
+    </div>
   </div>
   <button mat-raised-button (click)="createRecipe()">Save</button>
 </div>
