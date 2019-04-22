@@ -37,6 +37,14 @@ export class RecipeDetailComponent implements OnInit {
     this.router.navigate(['/comment-create/' + id]);
   }
 
+  updateComment(id) {
+
+  }
+
+  deleteComment(id) {
+    
+  }
+
   updateRecipe(id) {
     this.router.navigate(['/recipe-edit/' + id]);
   }

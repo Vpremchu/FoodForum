@@ -1,5 +1,6 @@
 <button *ngIf="user" class="AddButton" mat-raised-button (click) = "createRecipe()">Add a recipe</button>
 
+
 <mat-grid-list cols="2" rowHeight="450px">
   <mat-grid-tile *ngFor="let recipe of recipes" [colspan]="1" [rowspan]="1">
 

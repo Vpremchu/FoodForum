@@ -4,6 +4,8 @@ export class Recipe {
     User: string;
     Category: string;
     Description: string;
+    Preperation:string;
     Ingredients: [];
     Comments: [];
+    ImageUrl: string;
 }

@@ -10,12 +10,4 @@ export class AppComponent {
 
   router: Router;
   title = 'Food Forum';
-
-  // gotoRecipes(): void{
-  //   this.router.navigate(['recipes']);
-  // }
-  
-  // gotoUserS(): void {
-  //   this.router.navigate(['users']);
-  // }
 }
