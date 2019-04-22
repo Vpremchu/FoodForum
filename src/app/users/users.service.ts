@@ -74,7 +74,7 @@ export class UsersService {
 
     localStorage.setItem('id_token', authResult.data.token);
     localStorage.setItem('username', authResult.data.user.name);
-    localStorage.setItem('id', authResult.data.user._id);
+    localStorage.setItem('email', authResult.data.user.email);
     localStorage.setItem("expires_at", JSON.stringify(expiresAt.valueOf()));
     this.user.emit(null);
   }
@@ -108,9 +108,9 @@ export class UsersService {
     );
   }
 
-  deleteUser(id) {
-    return this.http.delete<any>(this.usersUrl + '/' + id, httpOptions).pipe(
-      tap(_ => console.log(`deleted user id=${id}`)),
+  deleteUser(email) {
+    return this.http.delete<any>(this.usersUrl + '/' + email, httpOptions).pipe(
+      tap(_ => console.log(`deleted user email=${email}`)),
       catchError(this.handleError<any>('deleteUser'))
     );
   }
