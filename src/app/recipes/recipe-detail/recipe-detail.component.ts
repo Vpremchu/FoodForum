@@ -37,14 +37,6 @@ export class RecipeDetailComponent implements OnInit {
     this.router.navigate(['/comment-create/' + id]);
   }
 
-  updateComment(id) {
-
-  }
-
-  deleteComment(id) {
-    
-  }
-
   updateRecipe(id) {
     this.router.navigate(['/recipe-edit/' + id]);
   }
@@ -53,7 +45,6 @@ export class RecipeDetailComponent implements OnInit {
     this.recipeService.deleteRecipe(id)
       .subscribe((result) => {
         this.getRecipe();
-        //this.router.navigate(['/recipes']);
       },(err) => {
         console.log(err);
       }
