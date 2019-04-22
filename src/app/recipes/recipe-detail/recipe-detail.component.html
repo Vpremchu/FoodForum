@@ -9,7 +9,9 @@
 
     <mat-list role="list" class="Ingredient-list">
       <h3>Ingredients</h3>
-      <mat-list-item role="listitem" *ngFor="let ingredient of recipe.Ingredients">{{ingredient.Name}}  |  {{ingredient.Description}}  |  {{ingredient.Amount}}</mat-list-item>
+      <mat-list-item class="" role="listitem" *ngFor="let ingredient of recipe.Ingredients">
+        <p class="centered">{{ingredient.Name}} | {{ingredient.Description}} | {{ingredient.Amount}}</p>
+      </mat-list-item>
     </mat-list>
 
     <div *ngIf="user" class="Recipe-user">
@@ -29,9 +31,20 @@
 
   </div>
 
-  <button mat-raised-button class="Button" (click) = "updateRecipe(recipe._id)">Edit</button>
-  <button mat-raised-button class="Button" (click) = "deleteRecipe(recipe._id)">Delete</button>
-  <button mat-raised-button class="Button" (click)= "addComment(recipe._id)">Add comment</button>
+  <button mat-raised-button class="Button" (click)="updateRecipe(recipe._id)">Edit</button>
+  <button mat-raised-button class="Button" (click)="deleteRecipe(recipe._id)">Delete</button>
+  <button mat-raised-button class="Button" (click)="addComment(recipe._id)">Add comment</button>
+
+  
+  <mat-list role="list" class="Ingredient-list">
+    <h3>Comments</h3>
+    <mat-list-item class="" role="listitem" *ngFor="let comment of recipe.Comments">
+      <p *ngIf="user" class="centered">{{user.name | uppercase}} <br> {{comment.Content}}</p> 
+      <button mat-raised-button class="Button" (click)="updateComment(comment._id)">Edit</button>
+      <button mat-raised-button class="Button" (click)="deleteComment(comment._id)">Delete</button>
+    </mat-list-item>
+   </mat-list>
+  
 
   <mat-list role="list" class="Ingredient-list" *ngIf="comment">
     <mat-list-item role="listitem" *ngFor="let comment of recipe.Comments">{{comment.Content}}</mat-list-item>

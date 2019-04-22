@@ -14,6 +14,7 @@ export class RecipesComponent implements OnInit {
   selectedRecipe: Recipe;
   addingRecipe = false;
   error: any;
+  user:any;
 
   constructor(
     private recipeService: Recipeservice,
@@ -21,6 +22,7 @@ export class RecipesComponent implements OnInit {
 
   ngOnInit() {
     this.getRecipes();
+    this.checkLogin();
   }
 
   getRecipes() {
@@ -46,6 +48,15 @@ export class RecipesComponent implements OnInit {
 
   createRecipe() {
     this.router.navigate(['/recipe-create']);
+  }
+
+  checkLogin() {
+    if (localStorage.getItem('username') !== null) {
+      this.user = true;
+    } else {
+      this.user = false;
+    }
+
   }
 
 }

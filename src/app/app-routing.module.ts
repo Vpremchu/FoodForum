@@ -15,6 +15,7 @@ import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 
 import { NavBarComponent } from './nav-bar/nav-bar.component';
+import { CommentEditComponent } from './recipes/comment-edit/comment-edit.component';
  
 const routes: Routes = [
   { path: 'recipe-detail/:id', component: RecipeDetailComponent },
@@ -25,7 +26,8 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent},
   { path: 'recipe-edit/:id', component: RecipeEditComponent},
   { path: 'comment-create/:id', component: CommentCreateComponent},
-  { path: 'recipe-create', component: RecipeCreateComponent}
+  { path: 'recipe-create', component: RecipeCreateComponent},
+  { path: 'comment-edit/:id', component: CommentEditComponent}
 ];
 
 @NgModule({

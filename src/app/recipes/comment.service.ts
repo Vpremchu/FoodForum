@@ -31,10 +31,10 @@ export class CommentService {
     );
   }
 
-  deleteComment(id) {
+  deleteComment(id): Observable<any> {
     return this.http.delete<any>(this.commentUrl + '/' + id, httpOptions).pipe(
-      tap(_ => console.log(`deleted user id=${id}`)),
-      catchError(this.handleError<any>('deleteUser'))
+      tap(_ => console.log(`deleted comment id=${id}`)),
+      catchError(this.handleError<any>('deleteComment'))
     );
   }
 

@@ -26,6 +26,7 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { InterceptService } from "./interceptor.service";
 import { RecipeCreateComponent } from './recipes/recipe-create/recipe-create.component';
 import { CommentCreateComponent } from './recipes/comment-create/comment-create.component';
+import { CommentEditComponent } from './recipes/comment-edit/comment-edit.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { CommentCreateComponent } from './recipes/comment-create/comment-create.
     UserEditComponent,
     RecipeEditComponent,
     RecipeCreateComponent,
-    CommentCreateComponent
+    CommentCreateComponent,
+    CommentEditComponent
   ],
 
   imports: [

@@ -37,17 +37,15 @@ export class Recipeservice {
             map(this.extractData));
     }
 
-    deleteRecipe(recipe: Recipe) {
-        const headers = new Headers();
-        headers.append('Content-Type', 'application/json');
-
-        const url = `${this.recipesUrl}/${recipe.Id}`;
-
-        return this.http.delete<Recipe>(url).pipe(catchError(this.handleError<any>('deleteRecipe')));
+    deleteRecipe(id): Observable<any> {
+        return this.http.delete<any>(this.recipesUrl + "/" + id, httpOptions).pipe(
+            tap(_ => console.log(`deleted recipe id=${id}`)),
+            catchError(this.handleError<any>('deleteRecipe')));
     }
 
     // Add new Recipe
-    post(recipe: Recipe) {
+    post(recipe: Recipe): Observable<any> {
+        console.log(recipe);
         const headers = new Headers({
             'Content-Type': 'application/json'
         });
