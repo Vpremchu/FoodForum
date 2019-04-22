@@ -4,6 +4,7 @@ import { UsersService } from '../../users/users.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormGroup, FormArray, FormBuilder, FormControl } from '@angular/forms';
 
+
 @Component({
   selector: 'app-recipe-create',
   templateUrl: './recipe-create.component.html',
@@ -13,6 +14,7 @@ export class RecipeCreateComponent implements OnInit {
   userId: any;
   recipeForm: any;
   //FormGroup;
+
 
   @Input() recipe: any = { Name: '', Ingredients: [], Description: "", User: this.userId , Preperation: "", Category: "", ImageUrl: "" };
 

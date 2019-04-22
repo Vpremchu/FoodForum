@@ -9,7 +9,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class UserDetailComponent implements OnInit {
 
-  @Input() user: any = { name: '', Recipes: [], email: ""};
+  @Input() user: any = { _id: '',name: '', Recipes: [], email: ''};
 
 
   constructor(private usersService: UsersService, private route: ActivatedRoute, private router: Router) { }
@@ -25,10 +25,10 @@ export class UserDetailComponent implements OnInit {
     this.router.navigate(['/user-edit/' + email]);
   }
 
-  deleteUser(email) {
-    this.usersService.deleteUser(this.user.email)
+  deleteUser(id) {
+    this.usersService.deleteUser(id)
       .subscribe((result) => {
-        this.router.navigate(['/user-detail/' + result._id]);
+        this.router.navigate(['/users']);
       }, (err) => {
         console.log(err);
       }

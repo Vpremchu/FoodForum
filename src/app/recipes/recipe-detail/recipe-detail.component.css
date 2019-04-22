@@ -1,5 +1,4 @@
 .Ingredient-list {
-    margin-left: 2%;
     text-align: center;
 }
 
@@ -32,6 +31,11 @@
 .Button {
     margin-left: 2%;
     align-content: center;
+}
+
+.CommentButton {
+    margin-left: 2%;
+    align-content: right;
 }
 
 h2 {
