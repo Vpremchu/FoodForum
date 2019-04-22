@@ -1,21 +1,10 @@
-<!-- <h2>{{recipe.name | uppercase}} Details</h2>
-<div><span>User: </span>{{recipe.User | uppercase}}</div>
-<div><span>Description: </span>{{recipe.Description}}</div>
-
-<ul class="recipes">
-  <li *ngFor="let recipe of recipes" [class.selected]="recipe === selectedRecipe" (click)="onSelect(recipe)">
-    <span class="badge">{{recipe.id}}</span> {{recipe.name}}
-  </li>
-</ul> -->
-
-<button class="AddButton" mat-raised-button (click) = "createRecipe()">Add a recipe</button>
+<button *ngIf="user" class="AddButton" mat-raised-button (click) = "createRecipe()">Add a recipe</button>
 
 <mat-grid-list cols="2" rowHeight="450px">
   <mat-grid-tile *ngFor="let recipe of recipes" [colspan]="1" [rowspan]="1">
 
       <mat-card class="Recipe-card">
         <mat-card-header>
-          <!-- <div mat-card-avatar class="Recipe-header-image" style="background-image: url('{{recipe.ImageUrl}}')"></div> -->
           <mat-card-title>{{recipe.Name | uppercase}}</mat-card-title>
         </mat-card-header>
       
