@@ -16,7 +16,7 @@ const httpOptions = {
 
 export class Recipeservice {
 
-    private recipesUrl = 'http://localhost:3000/api/recipe';
+    private recipesUrl = 'https://foodforum-api.herokuapp.com/api/recipe';
     private extractData(res: Response) {
         let body = res;
         return body || {};
